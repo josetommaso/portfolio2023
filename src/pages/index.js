@@ -58,7 +58,7 @@ export default function Home() {
 							transition={transition1}
 							className="flex justify-end h-full mx-auto"
 						>
-							<div className="relative overflow-hidden min-h-[400px] w-full md:w-[500px] xl:w-[600px] xl:top-1/2 xl:-translate-y-1/2 xl:right-0 xl:absolute">
+							<div className="relative overflow-hidden min-h-[400px] w-full md:w-[500px] xl:w-[600px] xl:top-1/2 xl:-translate-y-1/2 xl:right-[7%] xl:absolute">
 								<Image
 									src="/illustrations_robots.svg"
 									alt="jose tommaso portrait picture"
