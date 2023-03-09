@@ -46,18 +46,18 @@ const About = () => {
 							<div className="font-lg text-white">
 								<p>
 									Welcome to my portfolio! This is where you can find some
-									examples of my work as a Front End Developer. I've had the
-									pleasure of working on a wide range of projects over the
+									examples of my work as a Front End Developer. I&apos;ve had
+									the pleasure of working on a wide range of projects over the
 									years, from small personal websites to large-scale web
 									applications for clients all over the world.
 								</p>
 								<br />
 								<p>
-									In my portfolio, you'll find a selection of some of my
+									In my portfolio, you&apos;ll find a selection of some of my
 									favorite projects, showcasing my skills in HTML, CSS/SASS,
 									JavaScript and ReactJS. Each project has a description
-									outlining the project's goals, challenges, and solutions, as
-									well as some screenshots or demos so you can see my work in
+									outlining the project&apos;s goals, challenges, and solutions,
+									as well as some screenshots or demos so you can see my work in
 									action.
 								</p>
 
@@ -69,7 +69,7 @@ const About = () => {
 								>
 									<br />
 									<p>
-										I'm constantly learning and staying up-to-date with the
+										I&apos;m constantly learning and staying up-to-date with the
 										latest web technologies, which allows me to deliver
 										cutting-edge solutions that are optimized for performance,
 										scalability, and user experience. I believe that good web
@@ -83,9 +83,9 @@ const About = () => {
 									<p>
 										Take a look at my portfolio and see for yourself what I can
 										do. If you like what you see, feel free to get in touch with
-										me to discuss your project. I'm always up for a challenge
-										and love working on new and exciting projects. Thanks for
-										stopping by, and I hope you enjoy my work!
+										me to discuss your project. I&apos;m always up for a
+										challenge and love working on new and exciting projects.
+										Thanks for stopping by, and I hope you enjoy my work!
 									</p>
 								</motion.div>
 								<button
