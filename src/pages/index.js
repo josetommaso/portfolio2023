@@ -24,8 +24,39 @@ export default function Home() {
 				exit={{ opacity: 0 }}
 				transition={transition1}
 			>
-				<div className="container min-h-screen mx-auto h-full relative lg:px-20">
-					<div className="flex flex-col justify-center min-h-screen">
+				<div className="container min-h-screen mx-auto h-full relative lg:px-20 flex items-center">
+					<div className="grid lg:grid-cols-2 px-4">
+						<motion.div
+							initial={{ opacity: 0, y: '-50%' }}
+							animate={{ opacity: 1, y: '0' }}
+							exit={{ opacity: 0, y: '-50%' }}
+							transition={transition1}
+							className="w-full flex flex-col justify-center items-center lg:items-start"
+						>
+							<h1 className="h1">
+								Front-End <br />
+								Developer
+							</h1>
+							<p className="mb-10 text-lg text-white text-center lg:text-left">
+								Hey there! I&apos;m Jose Tommaso, a web developer who loves
+								making awesome websites. From simple landing pages to complex
+								web apps, I use cool tools like HTML, CSS, JavaScript, and React
+								to make websites look great on any device. Check out my work in
+								my portfolio, and let&apos;s chat if you have a project in mind.
+								Thanks for stopping by!
+							</p>
+							<div className="flex flex-wrap gap-6">
+								<Link href="/portfolio" className="btn btn-primary">
+									Portfolio
+								</Link>
+								<Link href="/contact" className="btn btn-secondary">
+									Contact me
+								</Link>
+							</div>
+						</motion.div>
+						<figure></figure>
+					</div>
+					{/* <div className="flex flex-col justify-center min-h-screen">
 						<motion.div
 							initial={{ opacity: 0, y: '-50%' }}
 							animate={{ opacity: 1, y: '0' }}
@@ -71,7 +102,7 @@ export default function Home() {
 								/>
 							</div>
 						</motion.div>
-					</div>
+					</div> */}
 				</div>
 			</motion.section>
 		</>
