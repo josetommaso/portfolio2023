@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 
 export default function App({ Component, pageProps, router }) {
 	return (
-		<main className="relative bg-gradient-to-br from-dark to-slate-800 min-h-screen overflow-hidden">
+		<main className="relative bg-[url('/ffflux.svg')] bg-no-repeat bg-cover min-h-screen overflow-hidden">
 			<Header />
 			<Socials />
 			<AnimatePresence mode="wait" initial={true}>
