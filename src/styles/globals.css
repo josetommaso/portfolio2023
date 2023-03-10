@@ -23,7 +23,7 @@
 		@apply text-5xl lg:text-[84px] font-bold mb-7 text-white;
 	}
 	.btn {
-		@apply py-[18px] px-[30px] inline-block text-base uppercase font-semibold text-white transition duration-500;
+		@apply py-[18px] px-[30px] inline-block text-base uppercase font-semibold text-white transition duration-500 rounded-xl;
 	}
 	.btn-primary {
 		@apply bg-primary hover:bg-slate-600;
