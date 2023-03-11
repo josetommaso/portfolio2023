@@ -34,21 +34,21 @@ const Contact = () => {
 									type="text"
 									placeholder="Your Name"
 									required
-									className="bg-primary border-gray-800 border-[1px] w-full p-3 text-white placeholder:text-white"
+									className="bg-primary border-gray-800 border-[1px] w-full p-3 text-white placeholder:text-white rounded-xl"
 								/>
 								<input
 									type="email"
 									placeholder="Your Email"
 									required
-									className="bg-primary border-gray-800 border-[1px] w-full p-3 text-white placeholder:text-white"
+									className="bg-primary border-gray-800 border-[1px] w-full p-3 text-white placeholder:text-white rounded-xl"
 								/>
 								<input
 									type="tel"
 									placeholder="Your phone number"
-									className="bg-primary border-gray-800 border-[1px] w-full p-3 text-white placeholder:text-white"
+									className="bg-primary border-gray-800 border-[1px] w-full p-3 text-white placeholder:text-white rounded-xl"
 								/>
 								<textarea
-									className="bg-primary border-gray-800 border-[1px] w-full p-3  text-white placeholder:text-white"
+									className="bg-primary border-gray-800 border-[1px] w-full p-3  text-white placeholder:text-white rounded-xl"
 									cols="30"
 									rows="10"
 									placeholder="Your Message"
