@@ -23,9 +23,9 @@ const Contact = () => {
 							<h1 className="h1 text-6xl">Contact me</h1>
 							<p className="font-lg text-white">
 								Want to get in touch? I&apos;d love to hear from you! You can
-								reach me at email@here.com, or you can use the contact form to
-								send me a message, and I&apos;ll get back to you as soon as
-								possible. Looking forward to hearing from you!
+								reach me at josetommasodev@gmail.com, or you can use the contact
+								form to send me a message, and I&apos;ll get back to you as soon
+								as possible. Looking forward to hearing from you!
 							</p>
 						</article>
 						<form>
