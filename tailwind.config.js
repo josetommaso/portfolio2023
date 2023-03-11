@@ -16,6 +16,13 @@ module.exports = {
 				light: '#ECDBBA',
 				dark: '#191919',
 			},
+			keyframes: {
+				upDown: {
+					'0%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(10px)' },
+					'0%': { transform: 'translateY(0px)' },
+				},
+			},
 		},
 	},
 	screens: {

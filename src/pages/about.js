@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { transition1 } from '@/transitions';
 import Head from 'next/head';
+import SphereFigure from '@/components/SphereFigure';
 
 const variants = {
 	open: { opacity: 1, height: 'auto' },
@@ -25,22 +26,25 @@ const About = () => {
 				transition={transition1}
 				className="section"
 			>
-				<div className="container mx-auto h-full relative lg:px-20">
-					<div className="grid auto-rows-auto auto-cols-auto md:grid-rows-1 md:grid-cols-2 md:items-center gap-8 md:gap-12 h-full pt-36 pb-14 md:min-h-screen">
-						<Image
-							src="/homepage-image.png"
-							alt="jose tommaso profile picture"
-							width="800"
-							height="1200"
-							className="h-full object-cover max-h-[400px] lg:max-h-[700px]"
-						/>
+				<div className="container mx-auto min-h-screen relative pt-36 flex items-center lg:px-20">
+					<div className="grid auto-rows-auto auto-cols-auto gap-8 h-full pb-14 xl:grid-rows-1 xl:grid-cols-2 xl:items-center xl:grid-rows-[700px]">
+						<figure className="relative h-full min-h-[400px] md:min-h-[600px]">
+							<SphereFigure color="#203453" />
+							<Image
+								src="/homepage-image.png"
+								alt="jose tommaso profile picture"
+								width="800"
+								height="1200"
+								className="w-full h-full absolute top-[49%] left-1/2 -translate-x-1/2 -translate-y-1/2 object-contain max-w-[60%] xl:max-w-[70%]"
+							/>
+						</figure>
 
 						<motion.article
 							initial={{ opacity: 0, y: '-80%' }}
 							animate={{ opacity: 1, y: '0' }}
 							exit={{ opacity: 0, y: '-80%' }}
 							transition={transition1}
-							className="px-4 text-center md:text-left"
+							className="px-4 text-center lg:text-left"
 						>
 							<h1 className="h1">About me</h1>
 							<div className="font-lg text-white">
