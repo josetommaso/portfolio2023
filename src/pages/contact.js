@@ -5,14 +5,10 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { motion } from 'framer-motion';
 import { transition1 } from '@/transitions';
 import emailjs from '@emailjs/browser';
-import axios from 'axios';
 import Error from '@/components/Error';
 
 const Contact = () => {
-	const [captchaError, setCaptchaError] = useState({
-		invalidCaptcha: false,
-		confirmCaptcha: false,
-	});
+	const [captchaError, setCaptchaError] = useState(false);
 
 	const form = useRef();
 	const captchaRef = useRef(null);
@@ -26,60 +22,35 @@ const Contact = () => {
 		setError,
 	} = useContactFormContext();
 
-	const verifyToken = async (token) => {
-		try {
-			let response = await axios.post(
-				`https://www.google.com/recaptcha/api/siteverify`,
-				{
-					secret: process.env.NEXT_PUBLIC_SECRET_KEY,
-					response: token,
-				},
-				console.log(token)
-			);
-			return response.data;
-		} catch (error) {
-			console.log('error ', error);
-		}
-	};
-
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const token = captchaRef.current.getValue();
 
 		if (token) {
-			let valid_token = await verifyToken(token);
-			if (valid_token.success) {
-				emailjs
-					.sendForm(
-						'service_qn9bmer',
-						'template_37n4ro',
-						form.current,
-						'Rm_PZyP-l3kudQPi-'
-					)
-					.then(
-						(result) => {
-							setSuccess(true);
-							setDisableButton(true);
-						},
-						(error) => {
-							setSuccess(false);
-							setError(true);
-						}
-					);
-			} else {
-				setCaptchaError((captchaError) => ({
-					...captchaError,
-					invalidCaptcha: true,
-				}));
-			}
-		} else {
-			setCaptchaError((captchaError) => ({
-				...captchaError,
-				confirmCaptcha: true,
-			}));
-		}
+			emailjs
+				.sendForm(
+					'service_qn9bmer',
+					'template_37n4ro',
+					form.current,
+					'Rm_PZyP-l3kudQPi-'
+				)
+				.then(
+					(result) => {
+						setSuccess(true);
+						setDisableButton(true);
+					},
+					(error) => {
+						setSuccess(false);
+						setError(true);
+					}
+				);
 
-		captchaRef.current.reset();
+			return;
+		} else {
+			setCaptchaError(true);
+			captchaRef.current.reset();
+			return;
+		}
 	};
 
 	return (
@@ -137,11 +108,8 @@ const Contact = () => {
 									theme="dark"
 									className="mt-4"
 								/>
-								{captchaError.confirmCaptcha && (
+								{captchaError && (
 									<Error message="Please, confirm you are not a robot!" />
-								)}
-								{captchaError.invalidCaptcha && (
-									<Error message="Sorry, invalid captcha! try again." />
 								)}
 								<button
 									type="submit"
