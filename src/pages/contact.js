@@ -1,12 +1,14 @@
 import Head from 'next/head';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useContactFormContext } from '@/context/contactForm';
+import reCAPTCHA, { ReCAPTCHA } from 'react-google-recaptcha';
 import { motion } from 'framer-motion';
 import { transition1 } from '@/transitions';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
 	const form = useRef();
+	const captchaRef = useRef(null);
 
 	const {
 		sucess,
@@ -19,11 +21,13 @@ const Contact = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		const token = captchaRef.current.getValue();
+		captchaRef.current.reset();
 
 		emailjs
 			.sendForm(
 				'service_qn9bmer',
-				'template_37n4ro',
+				'template_37n4ro3',
 				form.current,
 				'Rm_PZyP-l3kudQPi-'
 			)
@@ -99,6 +103,10 @@ const Contact = () => {
 								>
 									Send
 								</button>
+								<ReCAPTCHA
+									sitekey={process.env.NEXT_PUBLIC_SITE_KEY}
+									ref={captchaRef}
+								/>
 							</form>
 						)}
 
