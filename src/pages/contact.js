@@ -1,12 +1,17 @@
 import Head from 'next/head';
 import React, { useRef, useState } from 'react';
 import { useContactFormContext } from '@/context/contactForm';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { motion } from 'framer-motion';
 import { transition1 } from '@/transitions';
 import emailjs from '@emailjs/browser';
+import Error from '@/components/Error';
 
 const Contact = () => {
+	const [captchaError, setCaptchaError] = useState(false);
+
 	const form = useRef();
+	const captchaRef = useRef(null);
 
 	const {
 		sucess,
@@ -17,26 +22,35 @@ const Contact = () => {
 		setError,
 	} = useContactFormContext();
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+		const token = captchaRef.current.getValue();
 
-		emailjs
-			.sendForm(
-				'service_qn9bmer',
-				'template_37n4ro',
-				form.current,
-				'Rm_PZyP-l3kudQPi-'
-			)
-			.then(
-				(result) => {
-					setSuccess(true);
-					setDisableButton(true);
-				},
-				(error) => {
-					setSuccess(false);
-					setError(true);
-				}
-			);
+		if (token) {
+			emailjs
+				.sendForm(
+					'service_qn9bmer',
+					'template_37n4ro',
+					form.current,
+					'Rm_PZyP-l3kudQPi-'
+				)
+				.then(
+					(result) => {
+						setSuccess(true);
+						setDisableButton(true);
+					},
+					(error) => {
+						setSuccess(false);
+						setError(true);
+					}
+				);
+
+			return;
+		} else {
+			setCaptchaError(true);
+			captchaRef.current.reset();
+			return;
+		}
 	};
 
 	return (
@@ -88,6 +102,15 @@ const Contact = () => {
 										name="message"
 									></textarea>
 								</div>
+								<ReCAPTCHA
+									sitekey={process.env.NEXT_PUBLIC_SITE_KEY}
+									ref={captchaRef}
+									theme="dark"
+									className="mt-4"
+								/>
+								{captchaError && (
+									<Error message="Please, confirm you are not a robot!" />
+								)}
 								<button
 									type="submit"
 									className={`btn btn-secondary mt-6 px-10 ${
@@ -108,10 +131,10 @@ const Contact = () => {
 							</p>
 						)}
 						{error && (
-							<p className="p-3 rounded-xl text-white bg-red-400 mt-4">
-								An error has ocurred while sending you message. Please contact
-								me on josetommasodev@gmail.com
-							</p>
+							<Error
+								message="An error has ocurred while sending you message. Please contact
+							me on josetommasodev@gmail.com"
+							/>
 						)}
 					</div>
 				</div>
