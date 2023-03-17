@@ -48,7 +48,6 @@ const Contact = () => {
 			return;
 		} else {
 			setCaptchaError(true);
-			captchaRef.current.reset();
 			return;
 		}
 	};
