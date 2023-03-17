@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { transition1 } from '@/transitions';
 import Head from 'next/head';
+import Project from '@/components/Project';
 
 const projects = [
 	{
@@ -36,8 +36,8 @@ const Portfolio = () => {
 				transition={transition1}
 				className="section"
 			>
-				<div className="container mx-auto h-full relative px-6 lg:px-20">
-					<div className="grid grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-2 lg:items-center gap-8 lg:gap-24 lg:min-h-screen h-full pt-36 pb-14">
+				<div className="container mx-auto h-full px-6 lg:px-20">
+					<div className="grid grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-2 lg:items-center gap-8 lg:gap-24 lg:min-h-screen h-full pt-36 pb-14 transform-none">
 						<article>
 							<h1 className="h1">Portfolio</h1>
 							<p className="text-lg text-white">
@@ -52,22 +52,21 @@ const Portfolio = () => {
 							</Link>
 						</article>
 						<motion.ul
+							id="ulAnimation"
 							initial={{ opacity: 0, y: '-80%' }}
 							animate={{ opacity: 1, y: '0' }}
 							exit={{ opacity: 0, y: '-80%' }}
 							transition={transition1}
-							className="grid grid-rows-2 grid-cols-2 gap-2 list-none"
+							onAnimationComplete={() => {
+								const ul = document.querySelector('#ulAnimation');
+								setTimeout(() => {
+									ul.removeAttribute('style');
+								}, 10);
+							}}
+							className="grid grid-rows-2 grid-cols-2 gap-2 list-none rounded-xl overflow-hidden"
 						>
 							{projects.map((project, i) => (
-								<li key={i} className="overflow-hidden">
-									<Image
-										src={`/${project.file}`}
-										className="w-full h-full object-cover cursor-pointer hover:scale-105 transition duration-500"
-										alt={project.alt}
-										width="300"
-										height="200"
-									/>
-								</li>
+								<Project key={i} project={project} />
 							))}
 						</motion.ul>
 					</div>
