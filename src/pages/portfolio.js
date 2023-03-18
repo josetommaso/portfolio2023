@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { transition1 } from '@/transitions';
 import Head from 'next/head';
 import Project from '@/components/Project';
+import { useEffect } from 'react';
 
 const projects = [
 	{
@@ -24,6 +25,13 @@ const projects = [
 ];
 
 const Portfolio = () => {
+	const removeStyles = () => {
+		const removeStyles = requestAnimationFrame(() => {
+			const ul = document.querySelector('#ulAnimation');
+			ul.removeAttribute('style');
+		});
+	};
+
 	return (
 		<>
 			<Head>
@@ -56,13 +64,8 @@ const Portfolio = () => {
 							initial={{ opacity: 0, y: '-80%' }}
 							animate={{ opacity: 1, y: '0' }}
 							exit={{ opacity: 0, y: '-80%' }}
+							onAnimationComplete={removeStyles}
 							transition={transition1}
-							onAnimationComplete={() => {
-								const ul = document.querySelector('#ulAnimation');
-								setTimeout(() => {
-									ul.removeAttribute('style');
-								}, 10);
-							}}
 							className="grid grid-rows-2 grid-cols-2 gap-2 list-none rounded-xl overflow-hidden"
 						>
 							{projects.map((project, i) => (
