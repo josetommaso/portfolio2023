@@ -9,15 +9,16 @@ export default function App({ Component, pageProps, router }) {
 	return (
 		<>
 			<Script
-				src={`https://www.googletagmanager.com/gtag/js?  id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-				strategy="afterInteractive"
+				async
+				src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
 			/>
-			<Script id="google-analytics" strategy="afterInteractive">
+			<Script id="google-analytics">
 				{`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+					
         `}
 			</Script>
 			<main className="relative bg-[url('/ffflux.svg')] bg-no-repeat bg-cover min-h-screen overflow-hidden">
