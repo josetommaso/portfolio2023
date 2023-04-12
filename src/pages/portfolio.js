@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 const projects = [
 	{
-		file: 'portfolio-1.jpg',
+		file: 'maracay-meals-1.jpg',
 		alt: 'website project thumbnail',
 	},
 	{
