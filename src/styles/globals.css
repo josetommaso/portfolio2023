@@ -17,7 +17,7 @@
 
 @layer components {
 	.section {
-		@apply lg:min-h-screen w-screen;
+		@apply min-h-screen w-screen;
 	}
 	.h1 {
 		@apply text-5xl lg:text-[84px] font-bold mb-7 text-white;
