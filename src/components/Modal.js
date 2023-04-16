@@ -46,7 +46,7 @@ const Modal = ({ project, handleClose }) => {
 			>
 				<Image
 					src={`/${project.file}`}
-					className="w-full h-full object-cover rounded-xl"
+					className="w-full h-full object-cover rounded-xl max-w-[700px]"
 					alt={project.alt}
 					width="500"
 					height="500"
