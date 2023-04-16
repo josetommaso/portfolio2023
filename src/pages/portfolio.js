@@ -7,30 +7,54 @@ import { useEffect } from 'react';
 
 const projects = [
 	{
-		file: 'portfolio-1.jpg',
-		alt: 'website project thumbnail',
+		file: 'tshirt1.png',
+		alt: 'Website with white background, a 3D t-shirt model and text, website to customize your t-shirts by color, patterns and logo.',
+		techs: ['NextJS', 'Three.js', 'TailwindCSS'],
+		description:
+			'Create your unique and exclusive shirt with our brand-new 3D customization tool. Unleash your imagination and define your own style.',
+		github_url: 'https://github.com/josetommaso/tshirt-ai',
+		project_url: 'https://starlit-kleicha-e2bc48.netlify.app',
 	},
 	{
-		file: 'portfolio-2.jpg',
-		alt: 'website project thumbnail',
+		file: 'OLB.jpg',
+		alt: 'Website with an NFT image on the right side and text on the left side',
+		techs: ['NextJS', 'React Bricks', 'TailwindCSS'],
+		description:
+			'Welcome to "One Lucky Bastard," the home of an exclusive NFT collection that you won\'t find anywhere else. Our platform is dedicated to showcasing and selling this one-of-a-kind collection to discerning collectors and enthusiasts. \n This is a editable website, thanks to React Bricks.',
+		github_url: 'https://github.com/josetommaso/one-lucky-bastard',
+		project_url: 'https://one-lucky-bastard.vercel.app',
 	},
 	{
-		file: 'portfolio-3.jpg',
-		alt: 'website project thumbnail',
+		file: 'finddrink.jpg',
+		alt: 'Website with a search bar and a list of drinks. Search recipes of your favourites drinks.',
+		techs: ['ReactJS', 'ContextAPI', 'Bootstrap 4'],
+		description: 'Find you favourites drink recipes with this tool.',
+		github_url: 'https://github.com/josetommaso/findadrink',
+		project_url: 'https://findmeadrink-react.netlify.app',
 	},
 	{
-		file: 'portfolio-4.jpg',
-		alt: 'website project thumbnail',
+		file: 'cryptoprice.jpg',
+		alt: 'simple web app and user-friendly tool that allows users to quickly and easily check the current market value of various cryptocurrencies',
+		techs: ['ReactJS', 'Custom Hooks', 'CSS'],
+		description:
+			'"CryptoPriceFinder" is a simple and user-friendly tool that allows users to quickly and easily check the current market value of various cryptocurrencies.',
+		github_url:
+			'https://github.com/josetommaso/crypto-price-app/tree/master/src/components',
+		project_url: 'https://crypto-prices-react.netlify.app',
 	},
 ];
 
+const removeStyles = () => {
+	const removeStyles = requestAnimationFrame(() => {
+		const ul = document.querySelector('#ulAnimation');
+		ul.removeAttribute('style');
+	});
+};
+
 const Portfolio = () => {
-	const removeStyles = () => {
-		const removeStyles = requestAnimationFrame(() => {
-			const ul = document.querySelector('#ulAnimation');
-			ul.removeAttribute('style');
-		});
-	};
+	useEffect(() => {
+		removeStyles();
+	}, []);
 
 	return (
 		<>
@@ -45,8 +69,8 @@ const Portfolio = () => {
 				className="section"
 			>
 				<div className="container mx-auto h-full px-6 lg:px-20">
-					<div className="grid grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-2 lg:items-center gap-8 lg:gap-24 lg:min-h-screen h-full pt-36 pb-14 transform-none">
-						<article>
+					<div className="lg:grid grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-2 lg:items-center gap-8 lg:gap-24 lg:min-h-screen h-full pt-36 pb-14 transform-none">
+						<article className="mb-10 lg:mb-0">
 							<h1 className="h1">Portfolio</h1>
 							<p className="text-lg text-white">
 								Welcome to my portfolio! Here you&apos;ll find some examples of

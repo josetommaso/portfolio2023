@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Backdrop from './Backdrop';
+import Link from 'next/link';
+import { useRef } from 'react';
 
 const dropIn = {
 	hidden: {
@@ -23,16 +25,24 @@ const dropIn = {
 	},
 };
 
-const Modal = ({ handleClose, text, project }) => {
+const Modal = ({ project, handleClose }) => {
+	const refModal = useRef();
+
+	const backdropClick = (e) => {
+		if (!refModal.current.contains(e.target)) {
+			handleClose();
+		}
+	};
+
 	return (
-		<Backdrop>
+		<Backdrop onClick={backdropClick}>
 			<motion.div
-				onClick={(e) => e.stopPropagation()}
 				className="max-w-[90%] md:max-w-[50%] min-h-[300px] m-auto p-8 rounded-xl flex flex-col items-center"
 				variants={dropIn}
 				initial="hidden"
 				animate="visible"
 				exit="exit"
+				ref={refModal}
 			>
 				<Image
 					src={`/${project.file}`}
@@ -41,6 +51,35 @@ const Modal = ({ handleClose, text, project }) => {
 					width="500"
 					height="500"
 				/>
+				<div className="mt-10 text-white text-center">
+					<ul className="flex flex-wrap gap-3 justify-center">
+						{project.techs &&
+							project.techs.map((tech, i) => <li key={i}>{tech}</li>)}
+					</ul>
+					{project.description && <p className="mt-4">{project.description}</p>}
+					<div className="flex flex-wrap gap-4 justify-center mt-5">
+						{project.project_url && (
+							<Link
+								href={project.project_url}
+								className="btn btn-primary text-sm"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Website
+							</Link>
+						)}
+						{project.github_url && (
+							<Link
+								href={project.github_url}
+								className="btn btn-primary text-sm"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Github
+							</Link>
+						)}
+					</div>
+				</div>
 			</motion.div>
 		</Backdrop>
 	);
