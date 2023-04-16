@@ -42,7 +42,9 @@ const Header = () => {
 							<Link
 								href={'/'}
 								className={`hover:text-secondary transition duration-150 ${
-									currentRoute === '/' ? 'text-secondary' : ''
+									currentRoute === '/'
+										? 'text-secondary pointer-events-none'
+										: ''
 								}`}
 							>
 								Home
@@ -52,7 +54,9 @@ const Header = () => {
 							<Link
 								href={'/about'}
 								className={`hover:text-secondary transition duration-150 ${
-									currentRoute === '/about' ? 'text-secondary' : ''
+									currentRoute === '/about'
+										? 'text-secondary pointer-events-none'
+										: ''
 								}`}
 							>
 								About
@@ -62,7 +66,9 @@ const Header = () => {
 							<Link
 								href={'/portfolio'}
 								className={`hover:text-secondary transition duration-150 ${
-									currentRoute === '/portfolio' ? 'text-secondary' : ''
+									currentRoute === '/portfolio'
+										? 'text-secondary pointer-events-none'
+										: ''
 								}`}
 							>
 								Portfolio
@@ -72,7 +78,9 @@ const Header = () => {
 							<Link
 								href={'/contact'}
 								className={`hover:text-secondary transition duration-150 ${
-									currentRoute === '/contact' ? 'text-secondary' : ''
+									currentRoute === '/contact'
+										? 'text-secondary pointer-events-none'
+										: ''
 								}`}
 							>
 								Contact
