@@ -22,8 +22,8 @@ export const socials = [
 
 const Socials = () => {
 	return (
-		<aside className="hidden lg:flex lg:fixed lg:top-2/4 lg:-translate-y-1/2 lg:right-4 z-10">
-			<ul className="flex flex-col gap-3">
+		<aside className="flex fixed bottom-10 left-1/2 -translate-x-1/2 lg:translate-x-[unset] lg:left-[unset] lg:bottom-[unset] lg:top-2/4 lg:-translate-y-1/2 lg:right-4 z-10">
+			<ul className="flex lg:flex-col gap-3">
 				{socials.map((social, index) => (
 					<li key={index} className="group">
 						<Link
