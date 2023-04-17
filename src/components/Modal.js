@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Backdrop from './Backdrop';
 import Link from 'next/link';
 import { useRef } from 'react';
+import { MdOutlineClose } from 'react-icons/md';
 
 const dropIn = {
 	hidden: {
@@ -37,13 +38,19 @@ const Modal = ({ project, handleClose }) => {
 	return (
 		<Backdrop onClick={backdropClick}>
 			<motion.div
-				className="max-w-[90%] md:max-w-[50%] min-h-[300px] m-auto p-8 rounded-xl flex flex-col items-center"
+				className="max-w-[90%] md:max-w-[750px] min-h-[300px] m-auto p-8 rounded-xl flex flex-col items-center relative"
 				variants={dropIn}
 				initial="hidden"
 				animate="visible"
 				exit="exit"
 				ref={refModal}
 			>
+				<button
+					className="absolute bg-transparent border-0 right-0 -top-5 z-10 text-white"
+					onClick={() => handleClose()}
+				>
+					<MdOutlineClose size={30} />
+				</button>
 				<Image
 					src={`/${project.file}`}
 					className="w-full h-full object-cover rounded-xl max-w-[700px]"
